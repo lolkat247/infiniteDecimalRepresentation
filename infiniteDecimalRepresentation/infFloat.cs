@@ -25,7 +25,7 @@ namespace infiniteDecimalRepresentation
             }
         }*/
 
-        //convert large int literal to infFloat
+        //convert unsigned long int literal to infFloat
         public static implicit operator infFloat(UInt64 in1)
         {
             bool fuse = true;
@@ -40,7 +40,7 @@ namespace infiniteDecimalRepresentation
                     {
                         current.exponent[0] += 1;
                     } 
-                    catch (System.ArgumentOutOfRangeException e)
+                    catch (ArgumentOutOfRangeException)
                     {
                         current.exponent.Add(1);
                     }
@@ -54,7 +54,7 @@ namespace infiniteDecimalRepresentation
                             {
                                 current.exponent[x + 1] += 1;
                             }
-                            catch(System.ArgumentOutOfRangeException e)
+                            catch (ArgumentOutOfRangeException)
                             {
                                 current.exponent.Add(1);
                             }
