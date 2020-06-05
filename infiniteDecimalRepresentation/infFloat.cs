@@ -31,7 +31,7 @@ namespace infiniteDecimalRepresentation
             bool fuse = true;
             byte count = 0;
             infFloat current = new infFloat();
-            do
+            while (in1 != 0)
             {
                 //removes inital 0's ex. 1000 -> 1.0*10^3
                 if (fuse == true & in1 % 10 == 0)
@@ -71,13 +71,21 @@ namespace infiniteDecimalRepresentation
                 }
                 in1 /= 10;
             }
-            while (in1 != 0);
+            
 
             // DEBUG
+            String debug = "";
             foreach (var x in current.exponent)
             {
-                Console.WriteLine(x);
+                debug = x + debug;
             }
+            debug = "*10^" + debug;
+            foreach (var x in current.mantissa)
+            {
+                debug = x + debug;
+            }
+            Console.WriteLine(debug);
+
 
             return current;
         }
