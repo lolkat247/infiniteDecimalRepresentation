@@ -1,4 +1,6 @@
 ﻿using System;
+using infiniteDecimalRepresentation;
+
 
 namespace infiniteDecimalRepresentation
 {
@@ -6,7 +8,8 @@ namespace infiniteDecimalRepresentation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            infFloat cur = 100000000000000000L;
+            Console.WriteLine(cur);
         }
     }
 }
