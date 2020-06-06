@@ -15,16 +15,19 @@ namespace infiniteDecimalRepresentation
             Console.WriteLine(cur);
 
             //test exponent
-            infFloat cur2 = 10;
+            infFloat cur2 = 100;
             Console.WriteLine(cur2);
 
             //test mantissa
             infFloat cur3 = 123456789L;
             Console.WriteLine(cur3);
 
-            //test both
-            infFloat cur4 = 520200000000000000L;
-            Console.WriteLine(cur4);
+            //test negative
+            infFloat cur4 = -123;
+
+            //test all
+            infFloat cur5 = -5202000000L;
+            Console.WriteLine(cur5);
 
         }
     }

@@ -27,12 +27,19 @@ namespace infiniteDecimalRepresentation
         }*/
 
         //convert long int literal to infFloat
-        // TODO implement negative
         public static implicit operator infFloat(Int64 in1)
         {
             bool fuse = true;
             byte count = 0;
             infFloat current = new infFloat();
+
+            //check for negative 
+            if (in1 < 0)
+            {
+                current.negative = true;
+                in1 *= -1;
+            }
+
             while (in1 != 0)
             {
                 //removes inital 0's ex. 1000 -> 1.0*10^3
@@ -73,27 +80,59 @@ namespace infiniteDecimalRepresentation
                 }
                 in1 /= 10;
             }
-            
-
-            // DEBUG
-            String debug = "";
-            foreach (var x in current.exponent)
-            {
-                debug = x + debug;
-            }
-            debug = "*10^" + debug;
-            foreach (var x in current.mantissa)
-            {
-                debug = x + debug;
-            }
-            Console.WriteLine(debug);
-
 
             return current;
         }
 
         //convert infFloat to string for output
         public static implicit operator string(infFloat in1)
+        {
+            string[] buffer = new string[2];
+
+            foreach (var x in in1.mantissa)
+            {
+                buffer[0] = x + buffer[0];
+            }
+            if (buffer[0] == null)
+            {
+                buffer[0] = "0";
+            }
+            else {
+                if (in1.negative)
+                {
+                    buffer[0] = "-" + buffer[0];
+                } 
+            }
+
+            foreach (var x in in1.exponent)
+            {
+                buffer[1] = x + buffer[1];
+            }
+            if (buffer[1] == null)
+            {
+                buffer[1] = "0";
+            }
+            else
+            {
+                if (in1.negExp)
+                {
+                    buffer[1] = "-" + buffer[1];
+                }
+            }
+
+
+            return buffer[0] + "*10^" + buffer[1];
+        }
+
+        //addition override
+        /*public static infFloat operator +(infFloat in1, infFloat in2)
+        {
+
+        }*/
+
+        //convert infFloat to string for output
+        // TODO finish 
+        /*public static string ToDecimalStrLossy(infFloat in1)
         {
             string buffer = "";
             
@@ -108,10 +147,6 @@ namespace infiniteDecimalRepresentation
             }
 
             return buffer;
-        }
-        //public static infFloat operator +(infFloat in1, infFloat in2)
-        //{
-
-        //}
+        }*/
     }
 }
