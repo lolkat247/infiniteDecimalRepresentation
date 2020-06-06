@@ -8,7 +8,7 @@ namespace infiniteDecimalRepresentation
     {
         static void Main(string[] args)
         {
-            // Uint Test section //
+            // int Test section //
 
             //test 0
             infFloat cur = 0;

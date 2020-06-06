@@ -14,6 +14,7 @@ namespace infiniteDecimalRepresentation
         private List<byte> mantissa = new List<byte>();
         private List<byte> exponent = new List<byte>(); // only used to show where decimal is
         private bool negative = false;
+        private bool negExp = false;
 
         //convert to string for output
         /*public static implicit operator string(infFloat in1)
@@ -25,8 +26,9 @@ namespace infiniteDecimalRepresentation
             }
         }*/
 
-        //convert unsigned long int literal to infFloat
-        public static implicit operator infFloat(UInt64 in1)
+        //convert long int literal to infFloat
+        // TODO implement negative
+        public static implicit operator infFloat(Int64 in1)
         {
             bool fuse = true;
             byte count = 0;
@@ -88,6 +90,24 @@ namespace infiniteDecimalRepresentation
 
 
             return current;
+        }
+
+        //convert infFloat to string for output
+        public static implicit operator string(infFloat in1)
+        {
+            string buffer = "";
+            
+            foreach (var x in in1.mantissa)
+            {
+                buffer = x + buffer;
+            }
+
+            for (long i = 0; i < in1.exponent.Count; i++)
+            {
+                
+            }
+
+            return buffer;
         }
         //public static infFloat operator +(infFloat in1, infFloat in2)
         //{
