@@ -16,16 +16,6 @@ namespace infiniteDecimalRepresentation
         private bool negative = false;
         private bool negExp = false;
 
-        //convert to string for output
-        /*public static implicit operator string(infFloat in1)
-        {
-            string buffer;
-            foreach (var x in in1.mantissa)
-            {
-                buffer 
-            }
-        }*/
-
         //convert long int literal to infFloat
         public static implicit operator infFloat(Int64 in1)
         {
